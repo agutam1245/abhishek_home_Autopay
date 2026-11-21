@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Sign in | autopay</title>
+    <link rel="stylesheet" href="./static/styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="login-card" aria-labelledby="page-title">
+        <a class="brand" href="./" aria-label="autopay home">
+          <span class="brand-mark" aria-hidden="true">a</span>
+          <span>autopay</span>
+        </a>
+
+        <div class="intro">
+          <p class="eyebrow">WELCOME HOME</p>
+          <h1 id="page-title">Sign in or create an account</h1>
+          <p class="subtitle">Verify your mobile number to sign in or create your account.</p>
+        </div>
+
+        <div id="login-content">
+          <form id="phone-form" novalidate>
+            <label for="phone-number">Mobile number</label>
+            <div class="phone-input">
+              <span class="country-prefix" aria-hidden="true">+</span>
+              <input id="phone-number" name="phone" type="tel" inputmode="tel"
+                autocomplete="tel" placeholder="Country code and number" required>
+            </div>
+            <p class="field-hint">Include your country code, for example +1 555 123 4567.</p>
+            <button class="primary-button" type="submit">Send verification code</button>
+          </form>
+
+          <form id="code-form" class="hidden" novalidate>
+            <label for="verification-code">Verification code</label>
+            <input class="code-input" id="verification-code" name="code" type="text"
+              inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{4,10]"
+              maxlength="10" placeholder="Enter code from SMS" required>
+            <button class="primary-button" type="submit">Verify and continue</button>
+            <button class="text-button" id="change-number" type="button">Use a different number</button>
+          </form>
+
+          <p class="legal">We’ll only use your number for verification and sign-in.</p>
+        </div>
+
+        <section id="signed-in-content" class="hidden" aria-live="polite">
+          <p class="signed-in-message">Your account is ready for</p>
+          <p id="signed-in-number" class="signed-in-number"></p>
+          <button class="primary-button" id="logout" type="button">Sign out</button>
+        </section>
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+      </section>
+      <p class="page-footer">Phone verification powered by Twilio Verify · <a href="/payment">Make a one-time ₹1 UPI payment</a></p>
+    </main>
+    <script src="./static/app.js" defer></script>
+  </body>
+</html>

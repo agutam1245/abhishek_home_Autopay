@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>One-time UPI payment | autopay</title>
+    <link rel="stylesheet" href="./static/styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="login-card payment-card" aria-labelledby="page-title">
+        <a class="brand" href="/" aria-label="autopay home">
+          <span class="brand-mark" aria-hidden="true">a</span>
+          <span>autopay</span>
+        </a>
+
+        <div class="intro">
+          <p class="eyebrow">UPI PAYMENT</p>
+          <h1 id="page-title">One-time payment of ₹1</h1>
+          <p class="subtitle">Review the details, then continue in a UPI app such as PhonePe.</p>
+        </div>
+
+        <dl class="payment-summary">
+          <div>
+            <dt>Pay to</dt>
+            <dd>abhishekgtm@ybl</dd>
+          </div>
+          <div>
+            <dt>Amount</dt>
+            <dd>₹1.00 INR</dd>
+          </div>
+        </dl>
+
+        <a id="pay-button" class="primary-button payment-button" href="#"
+          aria-disabled="true" tabindex="-1">Continue to UPI app</a>
+        <p id="payment-feedback" class="feedback" role="status" aria-live="polite"></p>
+        <p class="legal">No payment happens until you approve it in your UPI app. This page does not receive or verify payment status.</p>
+        <a class="back-link" href="/">Back to sign in</a>
+      </section>
+      <p class="page-footer">Use a phone with a UPI app installed to continue.</p>
+    </main>
+    <script src="./static/payment.js" defer></script>
+  </body>
+</html>
