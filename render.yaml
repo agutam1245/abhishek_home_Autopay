@@ -8,7 +8,7 @@ services:
     startCommand: gunicorn main:app --bind 0.0.0.0:$PORT
     healthCheckPath: /api/payment-intent
   - type: web
-    name: maths-made-clear
+    name: sd-render
     runtime: static
     rootDir: abhishek_home
     buildCommand: echo "Static site, no build step required"
