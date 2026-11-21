@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: abhishek-home-autopay
+    runtime: python
+    plan: free
+    rootDir: autopay
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /api/payment-intent
+    envVars:
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: SESSION_COOKIE_SECURE
+        value: "true"
