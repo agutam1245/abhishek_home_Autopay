@@ -1,8 +1,9 @@
-# Maths, Made Clear
+# PySteps
 
-A responsive, static Class 10 CBSE maths study companion. It includes chapter-wise concept summaries, quick-reference formulas, original worked examples, chapter search, and local review progress.
-
-The site is an independent study aid, not affiliated with CBSE or NCERT. Its examples are original and it does not reproduce the textbook or provide a complete textbook answer key.
+A colorful, beginner-friendly Python course with 13 chapters. Each chapter
+includes concept notes, four commented code examples with sample output, and a
+short knowledge check. Chapter search and lesson progress are saved in the
+browser.
 
 ## Run locally
 
@@ -12,13 +13,11 @@ From the repository root, start Python's static file server:
 python -m http.server 8000 --directory abhishek_home
 ```
 
-Then open <http://127.0.0.1:8000>.
-
-Progress is saved in the browser's local storage. No backend or package installation is required.
+Open <http://127.0.0.1:8000>. Copy an example into a Python 3 interpreter to
+experiment with it. The learning site itself needs no backend or packages.
 
 ## Deploy to Render
 
-The repository-root `render.yaml` defines this folder as a separate static site
-named `maths-made-clear`, alongside the existing Autopay service. Create or sync
-the repository's Render Blueprint to provision the site. Once synced, Render
-publishes this folder and can deploy future commits automatically.
+The root `render.yaml` publishes this folder as a static site. Sync the
+repository's Render Blueprint to deploy updates. The current public URL is
+<https://maths-made-clear.onrender.com>.
