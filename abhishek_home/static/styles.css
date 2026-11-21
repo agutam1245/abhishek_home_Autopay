@@ -664,6 +664,30 @@ p {
   color: #a46112;
 }
 
+.foundation-callout {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  border: 1px solid #d8d0ff;
+  border-left: 4px solid #714fe5;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #f8f6ff, #f0fbf8);
+}
+
+.foundation-callout h3 {
+  margin: 0 0 6px;
+  color: #342168;
+  font-family: Manrope, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.foundation-callout p {
+  margin: 0;
+  color: #596579;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
 .chapter-action-row {
   display: flex;
   align-items: center;

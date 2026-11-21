@@ -3,10 +3,11 @@ const chapters = [
     title: "Getting Started",
     topics: ["print()", "Comments", "Expressions"],
     summary: "Meet Python, run your first instructions, and learn how the interpreter reads a program from top to bottom.",
+    foundation: "A Python program is a set of instructions written in a text file. Python reads those instructions in order; unlike a calculator, a script usually needs print() to show a result.",
     concepts: [
-      ["Python runs your instructions", "Write one statement per line. Python starts at the top and works downward."],
-      ["Use print() to show a result", "Put text inside quotes. print() can also display numbers and several values."],
-      ["Comments are notes", "Start a comment with #. Python ignores the rest of that line."]
+      ["Python runs your instructions", "Write one statement per line. Python starts at the top and works downward, so a value must be created before a later line can use it."],
+      ["Use print() to show a result", "Put text inside single or double quotes to make a string. print() can also show numbers, variables, and several values; it adds a newline at the end by default."],
+      ["Comments are notes", "Start a comment with #. Python ignores the rest of that line, which makes comments useful for explaining why a step exists without changing what the program does."]
     ],
     examples: [
       {
@@ -35,6 +36,13 @@ print((8 + 4) * 2)`,
         output: `16
 24`,
         explanation: "Multiplication happens before addition. Parentheses make the order explicit."
+      },
+      {
+        title: "Control what print() adds",
+        code: `print("Ready", end="... ")
+print("go!")`,
+        output: `Ready... go!`,
+        explanation: "The end argument replaces print()'s usual newline. The second call continues on the same line."
       }
     ],
     quiz: {
@@ -49,10 +57,11 @@ print((8 + 4) * 2)`,
     title: "Variables and Data Types",
     topics: ["Variables", "int / float / str", "Booleans"],
     summary: "Store information in named variables and recognize Python's everyday data types.",
+    foundation: "A variable is a name that lets you refer to a value later. Python figures out a value's type when you assign it, so you can start using names without declaring them first.",
     concepts: [
-      ["Names point to values", "Use = to assign a value. Choose readable names like student_name."],
-      ["Types describe values", "Common built-in types include int, float, str, and bool."],
-      ["Names are case-sensitive", "score, Score, and SCORE are three different names."]
+      ["Names point to values", "Use one = sign to assign a value; it does not mean equality. Choose descriptive names such as student_name, and use snake_case for ordinary variable names."],
+      ["Types describe values", "int stores whole numbers, float stores decimal numbers, str stores text, and bool stores True or False. The type determines which operations make sense."],
+      ["Names are case-sensitive", "score, Score, and SCORE are different names. A variable name cannot start with a digit or be a Python keyword, so prefer short, meaningful names."]
     ],
     examples: [
       {
@@ -89,6 +98,14 @@ left, right = right, left
 print(left, right)`,
         output: `moon sun`,
         explanation: "Python can unpack the two values on the right into the two names on the left."
+      },
+      {
+        title: "Update a number in place",
+        code: `count = 3
+count += 2
+print(count)`,
+        output: `5`,
+        explanation: "count += 2 is shorthand for count = count + 2. The variable now refers to the updated value."
       }
     ],
     quiz: {
@@ -103,10 +120,11 @@ print(left, right)`,
     title: "Input and Conversion",
     topics: ["input()", "int() / float()", "split()"],
     summary: "Collect text from a user and convert it to numbers when your program needs to calculate.",
+    foundation: "input() pauses a command-line program and returns what the user typed as text. Convert that text to a number before adding, comparing, or multiplying it as a numeric value.",
     concepts: [
-      ["input() returns text", "Even if someone types digits, input() gives your program a string."],
-      ["Convert before calculating", "Use int() for whole numbers and float() for decimal numbers."],
-      ["Validate real-world input", "Users can type unexpected values. Later chapters show how to handle that safely."]
+      ["input() returns text", "Even if someone types digits, input() returns a str. For example, the characters \"12\" are not yet the number 12, so numeric arithmetic needs a conversion."],
+      ["Convert before calculating", "Use int() for whole-number text and float() for decimal text. Conversion can fail if the input is not a valid number, so real programs should handle that possibility."],
+      ["Validate real-world input", "Users can press Enter without typing or enter unexpected characters. Check and clean text with methods such as strip(), then handle conversion errors rather than assuming input is always valid."]
     ],
     examples: [
       {
@@ -140,6 +158,15 @@ print(first + second)`,
         output: `Two numbers: 4 7
 11`,
         explanation: "split() separates the input at spaces, map(int, ...) converts each piece, and the two values are unpacked."
+      },
+      {
+        title: "Calculate a simple bill",
+        code: `hours = float(input("Hours worked: "))
+hourly_rate = 10
+print(f"Pay: {hours * hourly_rate:.2f}")`,
+        output: `Hours worked: 7.5
+Pay: 75.00`,
+        explanation: "float() accepts the decimal input 7.5. Multiplying by the hourly rate gives the pay, formatted to two decimal places."
       }
     ],
     quiz: {
@@ -155,10 +182,11 @@ print(value + 2)`,
     title: "Operators",
     topics: ["Arithmetic", "Comparison", "Logic"],
     summary: "Use arithmetic, comparison, and logical operators to calculate values and make decisions.",
+    foundation: "An operator is a symbol or word that tells Python what to do with values. First learn arithmetic operators, then use comparisons and logic to make decisions in later chapters.",
     concepts: [
-      ["Arithmetic operators", "+, -, *, /, //, %, and ** perform common calculations."],
-      ["Comparisons return Booleans", "Expressions such as score >= 50 evaluate to True or False."],
-      ["Combine conditions", "and, or, and not let you build larger logical tests."]
+      ["Arithmetic operators", "+, -, *, /, //, %, and ** perform common calculations. / keeps a fractional result, // floors the quotient, % gives a remainder, and ** raises a number to a power."],
+      ["Comparisons return Booleans", "Expressions such as score >= 50 evaluate to True or False. Use == to compare two values; a single = assigns a value to a name."],
+      ["Combine conditions", "and is true only when both sides are true; or is true when at least one side is true; not flips a Boolean. Parentheses make compound conditions easier to read."]
     ],
     examples: [
       {
@@ -195,6 +223,14 @@ has_ticket = True
 print(age >= 13 and has_ticket)`,
         output: `True`,
         explanation: "The full expression is True only when both sides of and are True."
+      },
+      {
+        title: "Check whether a number is even",
+        code: `number = 17
+is_even = number % 2 == 0
+print(is_even)`,
+        output: `False`,
+        explanation: "An even number has remainder 0 when divided by 2. The comparison returns a Boolean value."
       }
     ],
     quiz: {
@@ -209,10 +245,11 @@ print(age >= 13 and has_ticket)`,
     title: "Strings",
     topics: ["Indexing", "Slicing", "String methods"],
     summary: "Work with text using indexing, slices, useful methods, and readable formatted strings.",
+    foundation: "A string is an ordered sequence of characters surrounded by quotes. Strings cannot be changed in place; methods and slices create new strings that you can store or print.",
     concepts: [
-      ["Strings are ordered text", "Use an index to read one character. The first index is 0."],
-      ["Slices select a range", "text[start:stop] includes start and stops before stop."],
-      ["Methods return useful results", "Methods like lower(), strip(), and replace() help transform text."]
+      ["Strings are ordered text", "Use an index in square brackets to read one character. Counting starts at 0, so text[0] is the first character; negative indexes count backward from the end."],
+      ["Slices select a range", "text[start:stop] includes start and stops before stop. Leaving start blank begins at the first character; leaving stop blank continues to the end."],
+      ["Methods return useful results", "Methods such as lower(), strip(), and replace() return transformed strings. Store the result if you need it, because the original string remains unchanged."]
     ],
     examples: [
       {
@@ -248,6 +285,15 @@ points = 12
 print(f"{name} scored {points} points.")`,
         output: `Leela scored 12 points.`,
         explanation: "An f-string evaluates expressions inside curly braces and inserts their values into the text."
+      },
+      {
+        title: "Split and join text",
+        code: `words = "read code daily".split()
+print(words)
+print(" -> ".join(words))`,
+        output: `['read', 'code', 'daily']
+read -> code -> daily`,
+        explanation: "split() turns a string into a list of words. join() combines an iterable of strings using the text before its dot."
       }
     ],
     quiz: {
@@ -262,10 +308,11 @@ print(f"{name} scored {points} points.")`,
     title: "Conditionals",
     topics: ["if / elif / else", "Indentation", "Nested conditions"],
     summary: "Choose which code to run by testing conditions and organizing branches with indentation.",
+    foundation: "A conditional lets a program choose a path. Python evaluates a Boolean expression after if, and indentation marks the exact lines that belong to each branch.",
     concepts: [
-      ["if checks a condition", "The indented block runs only when the condition is True."],
-      ["elif adds another case", "Python checks elif branches in order and runs the first matching block."],
-      ["else is the fallback", "Use else when none of the earlier conditions matched."]
+      ["if checks a condition", "Write a condition after if and finish the line with a colon. The indented block runs only when the condition evaluates to True."],
+      ["elif adds another case", "Python checks elif branches from top to bottom and runs the first matching block. Order matters when ranges overlap, so test the most specific or highest threshold first."],
+      ["else is the fallback", "else has no condition of its own. Its indented block runs only when every preceding if and elif condition was False."]
     ],
     examples: [
       {
@@ -313,6 +360,18 @@ else:
     print("No match")`,
         output: `Python starts with Py`,
         explanation: "The in operator checks whether one string occurs inside another."
+      },
+      {
+        title: "Choose a price with or",
+        code: `is_student = False
+is_member = True
+if is_student or is_member:
+    price = 80
+else:
+    price = 100
+print(price)`,
+        output: `80`,
+        explanation: "or makes the condition True when either side is True. Here membership is enough to get the reduced price."
       }
     ],
     quiz: {
@@ -333,10 +392,11 @@ else:
     title: "Loops",
     topics: ["for", "while", "range()"],
     summary: "Repeat actions with for and while loops, and use range() to count without writing the same code again.",
+    foundation: "A loop repeats a block of indented code. Use for when you have a sequence or known range to visit; use while when repetition should continue until a condition changes.",
     concepts: [
-      ["for visits each item", "A for loop repeats once for every item in a sequence."],
-      ["range() creates a counting sequence", "range(start, stop, step) stops before the stop value."],
-      ["while repeats while True", "Update the condition inside the loop so it eventually becomes False."]
+      ["for visits each item", "A for loop assigns the next item to its loop variable and runs the indented body. When there are no more items, execution continues after the loop."],
+      ["range() creates a counting sequence", "range(start, stop, step) includes start and stops before stop. The default start is 0 and the default step is 1."],
+      ["while repeats while True", "Python checks the condition before each iteration. Update a value used by the condition inside the loop, or the loop may never end."]
     ],
     examples: [
       {
@@ -377,6 +437,17 @@ print(total)`,
         break`,
         output: `5`,
         explanation: "break immediately exits the loop when the first square greater than 20 is found."
+      },
+      {
+        title: "Skip selected values with continue",
+        code: `for number in range(1, 6):
+    if number % 2 == 0:
+        continue
+    print(number)`,
+        output: `1
+3
+5`,
+        explanation: "continue skips the remaining lines in the current iteration. The loop then moves to the next number."
       }
     ],
     quiz: {
@@ -392,10 +463,11 @@ print(total)`,
     title: "Lists and Tuples",
     topics: ["Lists", "Tuples", "Comprehensions"],
     summary: "Group values into ordered collections, update lists, and use tuples for fixed collections of related values.",
+    foundation: "Collections keep related values together so you can process them with one variable. Lists are flexible and changeable; tuples are ordered collections that are usually treated as fixed.",
     concepts: [
-      ["Lists can change", "Append, remove, or update list items after creating a list."],
-      ["Tuples are fixed sequences", "Use a tuple when the collection should not be changed."],
-      ["Comprehensions build lists", "A list comprehension creates a new list from an iterable in one readable expression."]
+      ["Lists can change", "Create a list with square brackets. Lists keep their order and allow duplicates; append(), insert(), and pop() add, insert, or remove items."],
+      ["Tuples are fixed sequences", "Create a tuple with parentheses or commas. Tuples support indexing and unpacking like lists, but their item references cannot be reassigned."],
+      ["Comprehensions build lists", "A list comprehension evaluates an expression for each item in an iterable. Add an if condition at the end when you only want selected items."]
     ],
     examples: [
       {
@@ -430,6 +502,17 @@ width, height = dimensions
 print(f"{width} by {height}")`,
         output: `640 by 480`,
         explanation: "Tuple unpacking assigns the first item to width and the second to height."
+      },
+      {
+        title: "Insert and remove list items",
+        code: `tasks = ["read", "practice"]
+tasks.insert(1, "plan")
+last_task = tasks.pop()
+print(tasks)
+print(last_task)`,
+        output: `['read', 'plan']
+practice`,
+        explanation: "insert(1, ...) places an item at index 1. pop() removes and returns the last item when no index is supplied."
       }
     ],
     quiz: {
@@ -446,10 +529,11 @@ print(items)`,
     title: "Dictionaries and Sets",
     topics: ["Key-value pairs", "Set uniqueness", "Set operations"],
     summary: "Use dictionaries to look up values by key and sets to keep unique items or compare groups.",
+    foundation: "Use a dictionary when each value has a meaningful key, such as a username or product code. Use a set when membership and uniqueness matter more than order.",
     concepts: [
-      ["Dictionaries map keys to values", "Use a key such as \"name\" or \"score\" to look up its value."],
-      ["get() handles missing keys", "dict.get(key, default) returns a fallback instead of raising KeyError."],
-      ["Sets contain unique items", "A set removes duplicates and supports union and intersection."]
+      ["Dictionaries map keys to values", "Create a dictionary with braces and key:value pairs. Keys are unique; reading a missing key with square brackets raises KeyError."],
+      ["get() handles missing keys", "dict.get(key, default) returns a fallback instead of raising KeyError. Use items() to loop over both keys and values."],
+      ["Sets contain unique items", "A set removes duplicates and is useful for fast membership checks. Union combines members; intersection finds shared members; difference finds members only in the first set."]
     ],
     examples: [
       {
@@ -485,6 +569,17 @@ print(sorted(club_a & club_b))`,
         output: `['art', 'chess', 'music', 'robotics']
 ['music']`,
         explanation: "| joins the sets; & finds values present in both. sorted() makes the displayed order predictable."
+      },
+      {
+        title: "Build a dictionary with a comprehension",
+        code: `prices = {"apple": 2, "pear": 3}
+double_prices = {
+    item: price * 2
+    for item, price in prices.items()
+}
+print(double_prices)`,
+        output: `{'apple': 4, 'pear': 6}`,
+        explanation: "A dictionary comprehension creates one key:value pair for each item in the source dictionary."
       }
     ],
     quiz: {
@@ -500,10 +595,11 @@ print(settings.get("theme", "light"))`,
     title: "Functions",
     topics: ["def", "Parameters", "return"],
     summary: "Package reusable steps into functions, pass information through parameters, and return results to the caller.",
+    foundation: "A function is a named, reusable block of code. Define it once with def, then call it whenever that task is needed; arguments carry values in and return sends a result out.",
     concepts: [
-      ["def creates a function", "The indented function body runs when the function is called."],
-      ["Parameters receive inputs", "Pass values as arguments when calling a function."],
-      ["return sends a result back", "A returned value can be stored, printed, or used in another calculation."]
+      ["def creates a function", "The function body is indented under its def line and does not run until the function is called. Keep each function focused on one task."],
+      ["Parameters receive inputs", "Parameters are names in the definition; arguments are the actual values supplied by the caller. Positional arguments match by order, while keyword arguments match by name."],
+      ["return sends a result back", "return immediately ends the function and passes a value to the caller. A function without an explicit return gives back None."]
     ],
     examples: [
       {
@@ -546,6 +642,16 @@ print(is_even(9))`,
         output: `True
 False`,
         explanation: "The comparison after return evaluates to True for even numbers and False otherwise."
+      },
+      {
+        title: "Return two related results",
+        code: `def smallest_and_largest(numbers):
+    return min(numbers), max(numbers)
+
+low, high = smallest_and_largest([3, 8, 2])
+print(low, high)`,
+        output: `2 8`,
+        explanation: "Python packages multiple return values into a tuple. The caller unpacks that tuple into low and high."
       }
     ],
     quiz: {
@@ -563,10 +669,11 @@ print(double(4))`,
     title: "Modules and Files",
     topics: ["import", "Standard library", "with open()"],
     summary: "Reuse code from Python's standard library and read or write files with a context manager.",
+    foundation: "A module is a Python file that provides reusable names. The standard library comes with Python; third-party packages are installed separately and imported into your program.",
     concepts: [
-      ["Modules organize reusable code", "import a module or selected names from it to use its features."],
-      ["The standard library is included", "Modules such as math, statistics, and pathlib are available with Python."],
-      ["with manages files safely", "A with block closes the file automatically when the block ends."]
+      ["Modules organize reusable code", "import module makes its names available through the module name; from module import name brings a selected name into the current namespace."],
+      ["The standard library is included", "Modules such as math, statistics, json, and pathlib ship with Python. Third-party libraries such as NumPy need to be installed in the active environment."],
+      ["with manages files safely", "open() returns a file object. A with block closes it automatically, even if an exception occurs; choose a mode such as r to read or w to write."]
     ],
     examples: [
       {
@@ -599,6 +706,16 @@ print("Saved note.txt")`,
 print(message)`,
         output: `Practice a little each day.`,
         explanation: "With no mode specified, open() reads the file. Run the write example first to create note.txt."
+      },
+      {
+        title: "Convert a dictionary to JSON text",
+        code: `import json
+
+person = {"name": "Ada", "active": True}
+text = json.dumps(person, sort_keys=True)
+print(text)`,
+        output: `{"active": true, "name": "Ada"}`,
+        explanation: "json.dumps() converts a Python value to JSON text. JSON uses lowercase true and false, unlike Python's True and False."
       }
     ],
     quiz: {
@@ -614,10 +731,11 @@ print(message)`,
     title: "Errors and Debugging",
     topics: ["Syntax errors", "Exceptions", "try / except"],
     summary: "Read error messages, handle expected problems, and use small debugging steps to find the cause of a bug.",
+    foundation: "An error message is evidence about where and why execution failed. Read the exception type and the last traceback line first, then inspect the named line and the values it uses.",
     concepts: [
-      ["Syntax errors stop parsing", "Check spelling, quotes, colons, parentheses, and indentation first."],
-      ["Exceptions happen at runtime", "Invalid input or a missing key can raise an exception while code runs."],
-      ["Catch only what you can handle", "Use a specific except clause and give a useful next step."]
+      ["Syntax errors stop parsing", "Python checks grammar before running the affected code. Check matching quotes and parentheses, required colons, spelling, and consistent indentation."],
+      ["Exceptions happen at runtime", "A program can be syntactically valid but fail while running, for example when converting invalid input or opening a missing file."],
+      ["Catch only what you can handle", "Use a specific except clause for an expected failure and explain how to recover. Avoid a bare except that hides unrelated programming mistakes."]
     ],
     examples: [
       {
@@ -664,6 +782,20 @@ print("Average:", total / len(prices))`,
         output: `Debug total: 25
 Average: 8.333333333333334`,
         explanation: "Printing an intermediate value helps check the calculation before adding more code."
+      },
+      {
+        title: "Raise a clear error for a bad argument",
+        code: `def divide(top, bottom):
+    if bottom == 0:
+        raise ValueError("bottom must not be zero")
+    return top / bottom
+
+try:
+    divide(10, 0)
+except ValueError as error:
+    print(error)`,
+        output: `bottom must not be zero`,
+        explanation: "raise signals invalid input with a specific exception. The caller catches it and displays a useful message."
       }
     ],
     quiz: {
@@ -678,10 +810,11 @@ Average: 8.333333333333334`,
     title: "Classes and Objects",
     topics: ["class", "__init__", "Methods"],
     summary: "Create your own types by combining data and behavior in classes, then make objects from those classes.",
+    foundation: "A class is a blueprint for objects. An object keeps its own data in attributes, while methods define actions that can read or update that data.",
     concepts: [
-      ["A class defines a type", "It describes the data and methods that its objects will have."],
-      ["__init__ sets up an object", "Python calls this method when you create a new instance."],
-      ["self refers to this object", "Use self to read or update the instance's attributes and call its methods."]
+      ["A class defines a type", "Use class followed by a name and a colon. Each call to the class creates an instance, and each instance can hold different attribute values."],
+      ["__init__ sets up an object", "Python calls this initializer when you create an instance. Assign values to self.attribute to save them on that particular object."],
+      ["self refers to this object", "self is the conventional first parameter of an instance method. Python supplies the instance automatically when you call pet.speak()."]
     ],
     examples: [
       {
@@ -742,6 +875,21 @@ class Bird(Animal):
 print(Bird().move())`,
         output: `flying`,
         explanation: "Bird inherits from Animal and overrides move() with behavior of its own."
+      },
+      {
+        title: "Update an object's state with a method",
+        code: `class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+account = BankAccount(25)
+account.deposit(10)
+print(account.balance)`,
+        output: `35`,
+        explanation: "deposit() changes the balance stored on this account instance. The method keeps related data and behavior together."
       }
     ],
     quiz: {
@@ -752,6 +900,292 @@ print(Bird().move())`,
       options: ["The current object", "The class's file name", "A Python keyword for a number"],
       correct: 0,
       explanation: "self is the conventional name for the current instance, allowing methods to access its attributes."
+    }
+  },
+  {
+    title: "Virtual Environments and Packages",
+    topics: ["venv", "pip", "Imports"],
+    summary: "Create an isolated Python environment, install scientific packages, and check that your code can import them.",
+    foundation: "Python includes a standard library, but tools such as NumPy, pandas, and SciPy are separate packages. A virtual environment gives one project its own package installs so they do not interfere with other projects.",
+    concepts: [
+      ["Create an environment per project", "python -m venv .venv creates an environment in the project folder. Use the environment's Python and pip so installs go to the right place."],
+      ["Install with Python's pip", "Run python -m pip install numpy pandas scipy from the activated environment. Using python -m pip ties pip to that specific Python interpreter; choose a Python release supported by all three packages."],
+      ["Install and import are different steps", "Install a package once in the environment with pip. Then import it in each program that needs it; package names and import names can differ."],
+      ["Keep environments reproducible", "Avoid installing packages globally for a project. Record dependencies when sharing a project so another environment can install the same tools."]
+    ],
+    examples: [
+      {
+        title: "Create a virtual environment",
+        code: `python -m venv .venv`,
+        output: `Creates a .venv folder; no output is printed on success.`,
+        explanation: "Run this from your project folder. The environment has its own Python executable and package directory."
+      },
+      {
+        title: "Activate the environment in PowerShell",
+        code: `.\\.venv\\Scripts\\Activate.ps1`,
+        output: `The prompt starts with (.venv)`,
+        explanation: "On macOS or Linux, activate it with source .venv/bin/activate. Activation makes python and pip refer to this environment."
+      },
+      {
+        title: "Install NumPy, pandas, and SciPy",
+        code: `python -m pip install numpy pandas scipy`,
+        output: `pip prints download and installation details; exact text depends on package versions.`,
+        explanation: "Run the command after activation. It installs the three packages into the current environment; an internet connection is normally needed."
+      },
+      {
+        title: "Check package imports",
+        code: `import numpy
+import pandas
+import scipy
+
+print("All three packages are ready")`,
+        output: `All three packages are ready`,
+        explanation: "If Python reaches the print statement, all three imports succeeded in the interpreter running this file."
+      },
+      {
+        title: "Check installed versions",
+        code: `import numpy as np
+import pandas as pd
+import scipy
+
+print("NumPy", np.__version__)
+print("pandas", pd.__version__)
+print("SciPy", scipy.__version__)`,
+        output: `Each package prints its installed version number.`,
+        explanation: "Version numbers change as packages are updated, so your output will not necessarily match someone else's."
+      }
+    ],
+    quiz: {
+      prompt: "Why use python -m pip instead of a plain pip command?",
+      code: `python -m pip install numpy`,
+      options: ["It runs pip for the selected Python interpreter", "It starts a new Python project", "It imports NumPy into every Python file"],
+      correct: 0,
+      explanation: "Using the interpreter to run pip helps install packages into the environment associated with that Python."
+    }
+  },
+  {
+    title: "NumPy Fundamentals",
+    topics: ["Arrays", "Vectorized operations", "Shapes"],
+    summary: "Work with fast, typed arrays and perform calculations across many values with concise NumPy operations.",
+    foundation: "NumPy is a library for numerical data. Its main object, an ndarray, stores values in an array and lets one operation work on the whole array instead of writing a Python loop for every element.",
+    concepts: [
+      ["Create arrays from Python data", "Import NumPy using the common alias np, then call np.array() with a list or nested lists. A one-dimensional array is like a row of values; nested lists create multiple dimensions."],
+      ["Array operations are element-wise", "Adding a number to an array or combining compatible arrays applies the operation to corresponding elements. This is called vectorization and often avoids an explicit loop."],
+      ["Shape describes the dimensions", "array.shape gives the size along each dimension, and array.ndim gives the number of dimensions. These help confirm that data has the layout your calculation expects."],
+      ["Select values with conditions", "A comparison such as array >= 5 creates a Boolean mask. Use that mask inside square brackets to select only matching values."],
+      ["Choose a reduction", "Functions such as np.sum() and np.mean() reduce many values to a summary. For two-dimensional data, axis selects which direction to summarize."]
+    ],
+    examples: [
+      {
+        title: "Create an array and inspect its shape",
+        code: `import numpy as np
+
+grid = np.array([[1, 2, 3], [4, 5, 6]])
+print(grid.shape)
+print(grid.ndim)`,
+        output: `(2, 3)
+2`,
+        explanation: "The array has two rows and three columns, so its shape is (2, 3) and it has two dimensions."
+      },
+      {
+        title: "Apply arithmetic to every element",
+        code: `import numpy as np
+
+temperatures = np.array([18, 20, 22])
+fahrenheit = temperatures * 9 / 5 + 32
+print(fahrenheit)`,
+        output: `[64.4 68.  71.6]`,
+        explanation: "NumPy applies each arithmetic step to every element. The extra spaces in displayed values help align the array."
+      },
+      {
+        title: "Select values with a condition",
+        code: `import numpy as np
+
+scores = np.array([3, 8, 5, 2])
+print(scores[scores >= 5])`,
+        output: `[8 5]`,
+        explanation: "scores >= 5 creates a Boolean mask, and indexing with that mask keeps only values whose condition is True."
+      },
+      {
+        title: "Summarize array values",
+        code: `import numpy as np
+
+readings = np.array([2, 4, 6])
+print(np.sum(readings))
+print(np.mean(readings))`,
+        output: `12
+4.0`,
+        explanation: "sum adds all values; mean divides their total by the number of values."
+      },
+      {
+        title: "Summarize each column",
+        code: `import numpy as np
+
+scores = np.array([[70, 80], [90, 100]])
+print(np.mean(scores, axis=0))`,
+        output: `[80. 90.]`,
+        explanation: "axis=0 collapses the rows and calculates one mean for each column. axis=1 would calculate one mean per row."
+      }
+    ],
+    quiz: {
+      prompt: "What does this NumPy expression produce?",
+      code: `np.array([1, 2, 3]) * 2`,
+      options: ["[2, 4, 6]", "[1, 2, 3, 1, 2, 3]", "A single value: 12"],
+      correct: 0,
+      explanation: "Multiplication by 2 is applied to each array element."
+    }
+  },
+  {
+    title: "pandas Fundamentals",
+    topics: ["Series", "DataFrames", "Filtering"],
+    summary: "Represent labeled columns and tables, select rows and columns, and summarize real-world data with pandas.",
+    foundation: "pandas is built for labeled, tabular data. A Series is one labeled column; a DataFrame is a table made from columns that can have different data types.",
+    concepts: [
+      ["A Series is a labeled column", "Create one with pd.Series(). Each value has an index label, which can be a number or a meaningful label such as a date."],
+      ["A DataFrame is a labeled table", "Create a DataFrame from a dictionary of columns or read data from a file. Column names make it easier to select and explain information."],
+      ["Select and filter deliberately", "Use frame['column'] to select one column. A condition such as frame['score'] >= 80 selects rows whose score meets the condition."],
+      ["Handle missing values explicitly", "Real datasets may contain missing values, represented by NaN. Inspect them and choose whether to fill, exclude, or investigate them before calculating."],
+      ["Group to compare categories", "groupby() splits rows by one or more category columns so an aggregation such as sum() or mean() can summarize each group."]
+    ],
+    examples: [
+      {
+        title: "Create a labeled Series",
+        code: `import pandas as pd
+
+visits = pd.Series([12, 18], index=["Mon", "Tue"])
+print(visits.to_dict())`,
+        output: `{'Mon': 12, 'Tue': 18}`,
+        explanation: "The index labels identify which value belongs to each day. to_dict() displays the label-to-value mapping."
+      },
+      {
+        title: "Create and inspect a DataFrame",
+        code: `import pandas as pd
+
+students = pd.DataFrame({
+    "name": ["Mina", "Dev"],
+    "score": [82, 91]
+})
+print(students["name"].tolist())
+print(students["score"].mean())`,
+        output: `['Mina', 'Dev']
+86.5`,
+        explanation: "The DataFrame stores named columns. Selecting score returns a Series, which provides a mean() method."
+      },
+      {
+        title: "Filter rows with a condition",
+        code: `import pandas as pd
+
+students = pd.DataFrame({
+    "name": ["Mina", "Dev", "Jo"],
+    "score": [82, 91, 76]
+})
+passed = students[students["score"] >= 80]
+print(passed["name"].tolist())`,
+        output: `['Mina', 'Dev']`,
+        explanation: "The comparison creates a Boolean condition for each row; using it inside brackets keeps rows where it is True."
+      },
+      {
+        title: "Choose how to handle missing values",
+        code: `import pandas as pd
+
+scores = pd.Series([80, None, 95])
+filled = scores.fillna(0)
+print(filled.tolist())`,
+        output: `[80.0, 0.0, 95.0]`,
+        explanation: "fillna(0) replaces missing values with zero. That choice is only appropriate when zero is meaningful for your data."
+      },
+      {
+        title: "Group and summarize rows",
+        code: `import pandas as pd
+
+sales = pd.DataFrame({
+    "team": ["A", "B", "A"],
+    "units": [3, 4, 2]
+})
+totals = sales.groupby("team")["units"].sum()
+print(totals.to_dict())`,
+        output: `{'A': 5, 'B': 4}`,
+        explanation: "groupby() separates the rows by team, then sum() totals units within each group."
+      }
+    ],
+    quiz: {
+      prompt: "Which pandas object is most directly used to represent a table of named columns?",
+      code: `table = pd.DataFrame({"city": ["Pune"], "rain_mm": [12]})`,
+      options: ["DataFrame", "Boolean mask", "A Python comment"],
+      correct: 0,
+      explanation: "A DataFrame is pandas' two-dimensional, labeled table structure."
+    }
+  },
+  {
+    title: "SciPy Fundamentals",
+    topics: ["Statistics", "Optimization", "Integration"],
+    summary: "Use SciPy's focused scientific tools for probability, distances, equation solving, and numerical integration.",
+    foundation: "SciPy builds on NumPy and provides algorithms for common scientific tasks. Its features live in submodules such as scipy.stats, scipy.optimize, and scipy.integrate, so import the tool you need.",
+    concepts: [
+      ["Use a SciPy submodule", "SciPy is organized into submodules. Import a specific function or submodule to make your code clear about which scientific tool it uses."],
+      ["Describe probability distributions", "scipy.stats includes probability distributions and statistical tests. A probability density is not itself the probability of one exact continuous value; areas over intervals represent probabilities."],
+      ["Solve equations numerically", "scipy.optimize offers algorithms for minimization and root finding. Root solvers generally need a starting estimate or an interval that brackets a solution."],
+      ["Approximate integrals", "scipy.integrate can numerically estimate a definite integral. Results are floating-point approximations, so small rounding differences are normal."],
+      ["Check inputs and assumptions", "A library can calculate only what your inputs describe. Confirm units, ranges, shapes, and assumptions before interpreting a scientific result."]
+    ],
+    examples: [
+      {
+        title: "Calculate a normal distribution density",
+        code: `from scipy.stats import norm
+
+print(round(norm.pdf(0), 3))`,
+        output: `0.399`,
+        explanation: "norm.pdf(0) evaluates the standard normal density at zero. This is a density value, not the probability that a continuous variable equals exactly zero."
+      },
+      {
+        title: "Find the distance between two points",
+        code: `from scipy.spatial.distance import euclidean
+
+distance = euclidean([0, 0], [3, 4])
+print(distance)`,
+        output: `5.0`,
+        explanation: "Euclidean distance is the straight-line distance. The 3-4-5 triangle makes this result easy to check."
+      },
+      {
+        title: "Find a root inside an interval",
+        code: `from scipy.optimize import root_scalar
+
+result = root_scalar(
+    lambda x: x * x - 9,
+    bracket=[0, 5]
+)
+print(round(result.root, 6))`,
+        output: `3.0`,
+        explanation: "The bracket contains the positive root of x squared minus 9. root_scalar searches for a value where the function is zero."
+      },
+      {
+        title: "Approximate a definite integral",
+        code: `from scipy.integrate import quad
+
+area, estimated_error = quad(
+    lambda x: x ** 2,
+    0,
+    1
+)
+print(round(area, 6))`,
+        output: `0.333333`,
+        explanation: "quad numerically estimates the integral of x squared from 0 to 1. The exact value is one third; estimated_error reports the algorithm's error estimate."
+      },
+      {
+        title: "Use a constant from SciPy",
+        code: `from scipy.constants import c
+
+print(c)`,
+        output: `299792458.0`,
+        explanation: "SciPy's constants module provides scientific values with units documented by the library; c is the speed of light in metres per second."
+      }
+    ],
+    quiz: {
+      prompt: "Which SciPy submodule is intended for finding numerical roots of equations?",
+      code: `from scipy.optimize import root_scalar`,
+      options: ["scipy.optimize", "scipy.integrate", "scipy.constants"],
+      correct: 0,
+      explanation: "scipy.optimize contains root-finding algorithms such as root_scalar."
     }
   }
 ];
@@ -864,6 +1298,10 @@ function renderChapter() {
     <div class="chapter-meta" aria-label="Topics in this chapter">
       ${chapter.topics.map((topic) => `<span class="topic-pill">${escapeHTML(topic)}</span>`).join("")}
     </div>
+    <section class="foundation-callout" aria-labelledby="foundation-title">
+      <h3 id="foundation-title">Start with the basics</h3>
+      <p>${escapeHTML(chapter.foundation)}</p>
+    </section>
     <div class="chapter-action-row">
       <span class="lesson-count">${chapter.concepts.length} concepts · ${chapter.examples.length} code examples · 1 quick check</span>
       <button class="review-button${isReviewed ? " is-complete" : ""}" type="button" aria-pressed="${isReviewed}">
