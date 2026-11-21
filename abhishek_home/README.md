@@ -1,44 +1,24 @@
-# abhishek_home
+# Maths, Made Clear
 
-A phone-number login and registration page using Twilio Verify SMS, Flask, and
-SQLite. Phone numbers must be entered in international E.164 format. Twilio
-trial accounts have restrictions, and SMS may incur charges; pricing depends
-on the destination country.
+A responsive, static Class 10 CBSE maths study companion. It includes chapter-wise concept summaries, quick-reference formulas, original worked examples, chapter search, and local review progress.
 
-## Configure Twilio
+The site is an independent study aid, not affiliated with CBSE or NCERT. Its examples are original and it does not reproduce the textbook or provide a complete textbook answer key.
 
-1. Create a Twilio account and a Verify Service in the Twilio Console.
-2. Set the following environment variables in the server environment:
-   - `TWILIO_ACCOUNT_SID`
-   - `TWILIO_AUTH_TOKEN`
-   - `TWILIO_VERIFY_SERVICE_SID` (the Verify Service SID beginning with `VA`)
-   - `FLASK_SECRET_KEY` (a long random value used to sign login sessions)
-3. Keep these values on the server. Do not put them in browser JavaScript or
-   commit them to source control.
+## Run locally
 
-## Run locally on Windows
+From the repository root, start Python's static file server:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-$env:TWILIO_ACCOUNT_SID = "AC..."
-$env:TWILIO_AUTH_TOKEN = "..."
-$env:TWILIO_VERIFY_SERVICE_SID = "VA..."
-$env:FLASK_SECRET_KEY = "replace-with-a-long-random-value"
-python main.py
+python -m http.server 8000 --directory abhishek_home
 ```
 
-Open <http://127.0.0.1:8000>. Verified phone numbers are registered in the
-local `users.db` database, and a signed session cookie keeps the user signed in.
-Use HTTPS in production and set `SESSION_COOKIE_SECURE=true` in the server
-environment.
+Then open <http://127.0.0.1:8000>.
 
-## One-time UPI payment link
+Progress is saved in the browser's local storage. No backend or package installation is required.
 
-Open <http://127.0.0.1:8000/payment> to create a one-time ₹1 UPI payment intent
-to `abhishekgtm@ybl`. The payer must review and approve the payment in their UPI
-app. This is a standard UPI intent, not the PhonePe Payment Gateway API; it
-does not automatically send money or verify payment completion. PhonePe
-merchant checkout and server-side payment confirmation require an approved
-merchant account and its server-side credentials.
+## Deploy to Render
+
+The repository-root `render.yaml` defines this folder as a separate static site
+named `maths-made-clear`, alongside the existing Autopay service. Create or sync
+the repository's Render Blueprint to provision the site. Once synced, Render
+publishes this folder and can deploy future commits automatically.

@@ -3,57 +3,93 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f5f7fb">
-    <title>Sign in | abhishek_home</title>
-    <link rel="stylesheet" href="./static/styles.css">
+    <meta
+      name="description"
+      content="A friendly, chapter-by-chapter Class 10 CBSE maths study companion with original worked examples and formula revision."
+    >
+    <title>Maths, Made Clear — Class 10 CBSE</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/app.js" defer></script>
   </head>
   <body>
-    <main class="page-shell">
-      <section class="login-card" aria-labelledby="page-title">
-        <a class="brand" href="./" aria-label="abhishek_home home">
-          <span class="brand-mark" aria-hidden="true">a</span>
-          <span>abhishek_home</span>
-        </a>
+    <a class="skip-link" href="#chapter-content">Skip to chapter content</a>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Maths, Made Clear home">
+        <span class="brand-mark" aria-hidden="true">∑</span>
+        <span class="brand-copy">
+          <strong>Maths, Made Clear</strong>
+          <span>CLASS 10 · CBSE</span>
+        </span>
+      </a>
+      <label class="search-box">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="chapter-search" type="search" placeholder="Search chapters or topics" autocomplete="off">
+        <kbd>/</kbd>
+      </label>
+      <a class="topbar-link" href="#about">About this guide <span aria-hidden="true">↗</span></a>
+    </header>
 
-        <div class="intro">
-          <p class="eyebrow">WELCOME HOME</p>
-          <h1 id="page-title">Sign in or create an account</h1>
-          <p class="subtitle">Verify your mobile number to sign in or create your account.</p>
+    <main>
+      <section class="welcome" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR CLASS 10 MATHS COMPANION</p>
+          <h1 id="welcome-title">Make every step <span>make sense.</span></h1>
+          <p class="welcome-intro">
+            Clear chapter notes, useful formulas, and original worked examples
+            to help you understand the method—not just memorise the answer.
+          </p>
+          <a class="continue-link" href="#chapter-content">
+            <span class="continue-icon" aria-hidden="true">↓</span>
+            <span><strong>Pick up where you left off</strong><small id="progress-summary">Choose a chapter to get started</small></span>
+            <span class="continue-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
-
-        <div id="login-content">
-          <form id="phone-form" novalidate>
-            <label for="phone-number">Mobile number</label>
-            <div class="phone-input">
-              <span class="country-prefix" aria-hidden="true">+</span>
-              <input id="phone-number" name="phone" type="tel" inputmode="tel"
-                autocomplete="tel" placeholder="Country code and number" required>
-            </div>
-            <p class="field-hint">Include your country code, for example +1 555 123 4567.</p>
-            <button class="primary-button" type="submit">Send verification code</button>
-          </form>
-
-          <form id="code-form" class="hidden" novalidate>
-            <label for="verification-code">Verification code</label>
-            <input class="code-input" id="verification-code" name="code" type="text"
-              inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{4,10]"
-              maxlength="10" placeholder="Enter code from SMS" required>
-            <button class="primary-button" type="submit">Verify and continue</button>
-            <button class="text-button" id="change-number" type="button">Use a different number</button>
-          </form>
-
-          <p class="legal">We’ll only use your number for verification and sign-in.</p>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="art-card art-card-back"><span>△</span><small>geometry</small></div>
+          <div class="art-card art-card-front">
+            <span class="art-equation">x² + y²</span>
+            <span class="art-rule"></span>
+            <span class="art-equation art-equation-small">= r²</span>
+            <span class="art-caption">one idea at a time</span>
+          </div>
+          <span class="art-spark spark-one">✳</span>
+          <span class="art-spark spark-two">✦</span>
         </div>
-
-        <section id="signed-in-content" class="hidden" aria-live="polite">
-          <p class="signed-in-message">Your account is ready for</p>
-          <p id="signed-in-number" class="signed-in-number"></p>
-          <button class="primary-button" id="logout" type="button">Sign out</button>
-        </section>
-        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
       </section>
-      <p class="page-footer">Phone verification powered by Twilio Verify · <a href="/payment">Make a one-time ₹1 UPI payment</a></p>
+
+      <section class="study-layout" aria-label="Class 10 maths chapters">
+        <aside class="chapter-sidebar">
+          <div class="sidebar-heading">
+            <div>
+              <p class="eyebrow">YOUR STUDY PLAN</p>
+              <h2>Chapters <span id="chapter-count">14</span></h2>
+            </div>
+            <span class="progress-ring" id="progress-ring" aria-label="0 of 14 chapters reviewed">
+              <span id="progress-count">0/14</span>
+            </span>
+          </div>
+          <div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div>
+          <nav id="chapter-list" class="chapter-list" aria-label="Maths chapters"></nav>
+          <p class="sidebar-note">Fourteen chapters. Plenty of small wins.</p>
+        </aside>
+
+        <section id="chapter-content" class="chapter-content" aria-live="polite" tabindex="-1">
+          <div class="loading-state">Loading your study guide…</div>
+        </section>
+      </section>
     </main>
-    <script src="./static/app.js" defer></script>
+
+    <footer id="about" class="site-footer">
+      <div class="footer-brand"><span class="brand-mark" aria-hidden="true">∑</span><strong>Maths, Made Clear</strong></div>
+      <p>
+        An independent learning companion with original explanations and examples.
+        It is not affiliated with CBSE or NCERT and does not reproduce the textbook
+        or provide a complete textbook answer key. For help with a particular
+        textbook question, use its exact exercise and question number with your teacher.
+      </p>
+      <span class="footer-year">Learn the why, then the how.</span>
+    </footer>
   </body>
 </html>

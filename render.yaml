@@ -7,3 +7,9 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn main:app --bind 0.0.0.0:$PORT
     healthCheckPath: /api/payment-intent
+  - type: web
+    name: maths-made-clear
+    runtime: static
+    rootDir: abhishek_home
+    buildCommand: echo "Static site, no build step required"
+    staticPublishPath: .
