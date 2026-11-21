@@ -36,4 +36,4 @@ requirements.
 
 The root `render.yaml` publishes this folder as a static site. Sync the
 repository's Render Blueprint to deploy updates. The current public URL is
-<https://maths-made-clear.onrender.com>.
+<https://sd-render-1b05.onrender.com>.
